@@ -84,11 +84,11 @@ void AracEkle(Otopark* otopark)
 		araba.Renk = (char*)malloc(20 * sizeof(char));
 		printf("%d nolu aracin girisini yapiniz.\n", i + 1);
 		printf("Plakanizi giriniz: ");
-		scanf("%s", araba.Plaka);
+		gets(araba.Plaka);
 		printf("Modeli giriniz: ");
-		scanf("%s", araba.Model);
+		gets(araba.Model);
 		printf("Rengi giriniz: ");
-		scanf("%s", araba.Renk);
+		gets(araba.Renk);
 		Kayit kayit;
 		kayit.Araba = araba;
 		kayit.GirisSaat = SaatiAl();
@@ -101,16 +101,17 @@ void AracEkle(Otopark* otopark)
 void AraclariListele(Otopark* otopark)
 {
 	system("cls");
-	printf("*************************** ARAC LISTESI **************************\n");
-	printf("%-12s %-20s %-20s %s\n", "PLAKA", "MODEL", "RENK", "GIRIS SAATI");
-	printf("*******************************************************************\n");
+	printf("***************************** ARAC LISTESI ****************************\n");
+	printf("* %-12s %-20s %-20s %-9s  *\n", "PLAKA", "MODEL", "RENK", "GIRIS SAATI");
+	printf("***********************************************************************\n");
 
 	for (size_t i = 0; i < otopark->KullanilanKapasite; i++)
 	{
 		Araba araba = otopark->Kayitlar[i].Araba;
 		char* saat = otopark->Kayitlar[i].GirisSaat;
-		printf("%-12s %-20s %-20s %s\n", araba.Plaka, araba.Model, araba.Renk, saat);
+		printf("* %-12s %-20s %-20s %-9s    *\n", araba.Plaka, araba.Model, araba.Renk, saat);
 	}
+	printf("***********************************************************************\n");
 }
 Otopark OtoparkOlustur(int maxKapasite, int kullanilabilirKapasite)
 {

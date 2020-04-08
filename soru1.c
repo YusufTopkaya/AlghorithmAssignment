@@ -3,6 +3,7 @@
 #include <time.h>
 
 int GetRandom(int, int);
+void DiziYazdir(int*, int);
 
 int main()
 {
@@ -31,18 +32,25 @@ int main()
 	}
 	tDiziPtr = realloc(tDiziPtr, (10 - (a)) * sizeof(int));
 	cDiziPtr = realloc(cDiziPtr, (10 - (b)) * sizeof(int));
+	printf("Dizi\n");
+	DiziYazdir(diziPtr,10);
 	printf("Ciftler\n");
-	for (int j = 0; j < a; j++)
-		printf("%d\n", *(cDiziPtr + j));
-	free(cDiziPtr);
+	DiziYazdir(cDiziPtr,a);
 	printf("Tekler\n");
-	for (int k = 0; k < b; k++)
-		printf("%d\n", *(tDiziPtr + k));
-	free(tDiziPtr);
+	DiziYazdir(tDiziPtr,b);
+
 	return 0;
 }
 
 int GetRandom(int max, int min)
 {
 	return (rand() % (max + 1) + min);
+}
+
+void DiziYazdir(int*dizi, int elemanSayisi)
+{
+    for(int i=0; i<elemanSayisi; i++)
+        printf("%d\n", *(dizi + i));
+
+    free(dizi);
 }
